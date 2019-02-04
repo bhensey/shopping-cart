@@ -1,0 +1,25 @@
+div.cartItem {
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+  overflow: scroll;
+  text-align: left;
+}
+
+img.cartItem {
+  float: left;
+  height: 100px;
+  padding-right: 20px;
+}
+
+h1.cartItem {
+  font-size: 13px;
+  color: white;
+  line-height: 1;
+}
+
+h2.cartItem {
+  font-size: 13px;
+  color: grey;
+  line-height: 0.5;
+}

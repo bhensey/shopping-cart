@@ -1,0 +1,33 @@
+.cart {
+  background-color: rgba(0, 0, 0, 0.93);
+  height: 100vh;
+  width: 400px;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.cart-container {
+  display: flex;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  vertical-align: top;
+}
+
+.cart-icon {
+  background-color: rgba(0, 0, 0, 0.93);
+  color: white;
+  text-align: center;
+  vertical-align: center;
+  padding: 20px;
+  display: inline-block;
+  float: left;
+}
+
+#checkout {
+  margin-top: 30px;
+  width: 150px;
+  height: 30px;
+}
