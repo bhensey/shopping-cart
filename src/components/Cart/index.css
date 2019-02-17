@@ -28,10 +28,14 @@
   border-bottom-left-radius: 5px;
 }
 
+.cart-icon:hover {
+  cursor: pointer;
+}
+
 #checkout {
   margin: 40px auto 80px;
-  width: 150px;
-  height: 30px;
+  width: 130px;
+  height: 40px;
   background-color: rgba(150, 150, 200, 90);
   border: none;
   border-radius: 5px;
@@ -41,4 +45,5 @@
   transition: background 0.07s linear;
   background-color: slateblue;
   color: white;
+  cursor: pointer;
 }

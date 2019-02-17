@@ -1,0 +1,18 @@
+span.filter {
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  border: none;
+  box-shadow: 0 0 4px grey;
+}
+
+span.filter:hover {
+  transition: background 0.07s linear;
+  background-color: slateblue;
+  color: white;
+  cursor: pointer;
+}

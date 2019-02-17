@@ -11,10 +11,15 @@ export default class Cart extends Component {
     const rows = [];
     for (var key in this.props.cart) {
       if (this.props.cart.hasOwnProperty(key)) {
+        let id = key.substring(0, key.length - 2);
+        let size = key[key.length - 1];
+        console.log(id, size);
         rows.push(
           <CartItem
             key={key}
-            product={this.props.products.products[key]}
+            product={this.props.products.products[id]}
+            productId={key}
+            size={size}
             quantity={this.props.cart[key]}
             removeCart={this.props.removeCart}
           />

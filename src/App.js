@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import Header from "./components/Header";
 import ProductTable from "./components/ProductTable";
 import Cart from "./components/Cart";
 
@@ -45,7 +46,7 @@ class App extends Component {
     let PRODUCTS = require("./static/data/products.json");
     return (
       <div>
-        <h1>$hirt $hop</h1>
+        <Header />
         <ProductTable products={PRODUCTS} addCart={this.addCart} />
         <Cart
           toggleCart={this.toggleCart}
