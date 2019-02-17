@@ -7,15 +7,53 @@ import Cart from "./components/Cart";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { cartOpen: false, cart: [[0, 2], [1, 1], [2, 0]] };
+    this.state = { showCart: false, cart: {} };
+    this.toggleCart = this.toggleCart.bind(this);
+    this.addCart = this.addCart.bind(this);
+    this.removeCart = this.removeCart.bind(this);
+  }
+  toggleCart() {
+    this.setState({ showCart: !this.state.showCart });
+    console.log(this.state.showCart);
+  }
+  addCart(productId) {
+    this.state.cart[productId]
+      ? this.setState({
+          cart: {
+            ...this.state.cart,
+            [productId]: this.state.cart[productId] + 1
+          }
+        })
+      : this.setState({ cart: { ...this.state.cart, [productId]: 1 } });
+    this.setState({ showCart: true });
+  }
+  removeCart(productId) {
+    if (this.state.cart[productId] < 2) {
+      delete this.state.cart[productId];
+      this.setState({ cart: { ...this.state.cart } });
+    } else {
+      this.setState({
+        cart: {
+          ...this.state.cart,
+          [productId]: this.state.cart[productId] - 1
+        }
+      });
+    }
   }
 
   render() {
     let PRODUCTS = require("./static/data/products.json");
     return (
       <div>
-        <ProductTable products={PRODUCTS} />
-        <Cart products={PRODUCTS} cart={this.state.cart} />
+        <h1>$hirt $hop</h1>
+        <ProductTable products={PRODUCTS} addCart={this.addCart} />
+        <Cart
+          toggleCart={this.toggleCart}
+          showCart={this.state.showCart}
+          products={PRODUCTS}
+          cart={this.state.cart}
+          removeCart={this.removeCart}
+        />
       </div>
     );
   }

@@ -5,36 +5,32 @@ import CartItem from "./CartItem";
 export default class Cart extends Component {
   constructor(props) {
     super(props);
-    this.state = { isOpen: false };
-    this.openFloatCart = () => {
-      this.setState({ isOpen: true });
-    };
-
-    this.closeFloatCart = () => {
-      this.setState({ isOpen: false });
-    };
   }
 
   render() {
     const rows = [];
-    for (let i = 0; i < this.props.cart.length; i++) {
-      rows.push(
-        <CartItem
-          product={this.props.products.products[i]}
-          quantity={this.props.cart[i][1]}
-        />
-      );
+    for (var key in this.props.cart) {
+      if (this.props.cart.hasOwnProperty(key)) {
+        rows.push(
+          <CartItem
+            key={key}
+            product={this.props.products.products[key]}
+            quantity={this.props.cart[key]}
+            removeCart={this.props.removeCart}
+          />
+        );
+      }
     }
     return (
       <div className="cart-container">
-        {this.state.isOpen && (
-          <div onClick={() => this.closeFloatCart()} className="cart-icon">
+        {!this.props.showCart && (
+          <div onClick={() => this.props.toggleCart()} className="cart-icon">
             Cart
           </div>
         )}
-        {!this.state.isOpen && (
+        {this.props.showCart && (
           <div>
-            <div onClick={() => this.openFloatCart()} className="cart-icon">
+            <div onClick={() => this.props.toggleCart()} className="cart-icon">
               Cart
             </div>
             <div className="cart">

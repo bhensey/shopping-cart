@@ -16,4 +16,13 @@
 .product button {
   font-size: 20px;
   padding: 10px 20px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}
+
+.product button:hover {
+  transition: background 0.07s linear;
+  background-color: slateblue;
+  color: white;
 }

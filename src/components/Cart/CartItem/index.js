@@ -14,6 +14,12 @@ export default class CartItem extends Component {
         <h1 className="cartItem">{this.props.product.title}</h1>
         <h2 className="cartItem">${this.props.product.price}</h2>
         <h2 className="cartItem">Quantity: {this.props.quantity}</h2>
+        <button
+          className="cartItem"
+          onClick={() => this.props.removeCart(this.props.product.id)}
+        >
+          remove
+        </button>
       </div>
     );
   }

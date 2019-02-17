@@ -2,7 +2,6 @@ div.cartItem {
   display: inline-block;
   width: 100%;
   padding: 20px;
-  overflow: scroll;
   text-align: left;
 }
 
@@ -22,4 +21,16 @@ h2.cartItem {
   font-size: 13px;
   color: grey;
   line-height: 0.5;
+}
+
+button.cartItem {
+  background-color: inherit;
+  color: grey;
+  font-size: 10px;
+}
+
+button.cartItem:hover {
+  transition: background 0.07s linear;
+  background-color: slateblue;
+  color: white;
 }
