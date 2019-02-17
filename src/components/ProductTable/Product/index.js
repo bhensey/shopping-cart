@@ -7,17 +7,32 @@ export default class Product extends Component {
     let buttons = [];
     if (PRODUCT.sizes["s"]) {
       buttons.push(
-        <button onClick={() => this.props.addCart(`${PRODUCT.id}-s`)}>S</button>
+        <button
+          key="small-button"
+          onClick={() => this.props.addCart(`${PRODUCT.id}-s`)}
+        >
+          S
+        </button>
       );
     }
     if (PRODUCT.sizes["m"]) {
       buttons.push(
-        <button onClick={() => this.props.addCart(`${PRODUCT.id}-m`)}>M</button>
+        <button
+          key="medium-button"
+          onClick={() => this.props.addCart(`${PRODUCT.id}-m`)}
+        >
+          M
+        </button>
       );
     }
     if (PRODUCT.sizes["l"]) {
       buttons.push(
-        <button onClick={() => this.props.addCart(`${PRODUCT.id}-l`)}>L</button>
+        <button
+          key="large-button"
+          onClick={() => this.props.addCart(`${PRODUCT.id}-l`)}
+        >
+          L
+        </button>
       );
     }
     return (
@@ -27,7 +42,7 @@ export default class Product extends Component {
         />
         <h4>{PRODUCT.title}</h4>
         <h3>${PRODUCT.price}</h3>
-        <h3>Add to cart:</h3>
+        <h4>Add to cart:</h4>
         {buttons}
       </div>
     );

@@ -8,11 +8,11 @@ span.filter {
   border-radius: 100%;
   border: none;
   box-shadow: 0 0 4px grey;
+  transition: background 0.07s linear;
 }
 
 span.filter:hover {
-  transition: background 0.07s linear;
-  background-color: slateblue;
-  color: white;
   cursor: pointer;
+  background-color: rgb(230, 230, 254) !important;
+  color: black !important;
 }
