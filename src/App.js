@@ -4,16 +4,44 @@ import "./App.css";
 import Header from "./components/Header";
 import ProductTable from "./components/ProductTable";
 import Cart from "./components/Cart";
+import firebase from "firebase";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+
+firebase.initializeApp({
+  apiKey: "AIzaSyAVselQDrQJ9DQfK0F0k0aGcLwAYPXXfs4",
+  authDomain: "new-shopping-cart-76c2b.firebaseapp.com"
+});
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { filter: [false, false, false], showCart: false, cart: {} };
+    this.state = {
+      isSignedIn: false,
+      filter: [false, false, false],
+      showCart: false,
+      cart: {}
+    };
     this.updateFilter = this.updateFilter.bind(this);
     this.toggleCart = this.toggleCart.bind(this);
     this.addCart = this.addCart.bind(this);
     this.removeCart = this.removeCart.bind(this);
   }
+
+  uiConfig = {
+    signInFlow: "popup",
+    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+    callbacks: {
+      signInSuccessWithAuthResult: () => false
+    }
+  };
+
+  componentDidMount = () => {
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({ isSignedIn: !!user });
+      console.log("user", user);
+    });
+  };
+
   toggleCart() {
     this.setState({ showCart: !this.state.showCart });
   }
@@ -50,8 +78,28 @@ class App extends Component {
   render() {
     let PRODUCTS = require("./static/data/products.json");
     return (
-      <div>
-        <Header updateFilter={this.updateFilter} />
+      <div className="App">
+        <div className="header-container">
+          {this.state.isSignedIn ? (
+            <div className="auth">
+              <h3>
+                Welcome {firebase.auth().currentUser.displayName.split(" ")[0]}
+              </h3>
+              <button onClick={() => firebase.auth().signOut()}>
+                Sign out!
+              </button>
+            </div>
+          ) : (
+            <div className="disauth">
+              <StyledFirebaseAuth
+                className="signin"
+                uiConfig={this.uiConfig}
+                firebaseAuth={firebase.auth()}
+              />
+            </div>
+          )}
+          <Header className="header" updateFilter={this.updateFilter} />
+        </div>
         <ProductTable
           filter={this.state.filter}
           products={PRODUCTS}
