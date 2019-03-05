@@ -1,5 +1,7 @@
 language: node_js
 node_js: lts/*
+script:
+- cd ./public && npm build && cd ..
 deploy:
   skip_cleanup: true
   provider: firebase
