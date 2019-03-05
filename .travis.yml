@@ -2,7 +2,7 @@ language: node_js
 node_js: lts/*
 script:
 - cd ./public && npm install && cd ..
-- cd ./public && npm run-script build && cd ..
+- cd ./public && CI="false" npm run-script build && cd ..
 deploy:
   skip_cleanup: true
   provider: firebase
